@@ -30,7 +30,7 @@ namespace Application.Activities
             {
                 var activity = await _context.Activities.FindAsync(request.Activity.Id);
                 this._mapper.Map(request.Activity, activity);
-;
+
                 await _context.SaveChangesAsync();
 
                 return Unit.Value;
