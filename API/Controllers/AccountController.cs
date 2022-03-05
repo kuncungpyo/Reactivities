@@ -22,7 +22,7 @@ namespace API.Controllers
         private readonly SignInManager<AppUser> _signInManager;
 
         private readonly TokenService _tokenService;
-        public AccountController(UserManager<AppUser> userManager, 
+        public AccountController(UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             TokenService tokenService)
         {
@@ -59,7 +59,7 @@ namespace API.Controllers
 
             if (await _userManager.Users.AnyAsync(u => u.UserName == registerDto.Username))
             {
-               ModelState.AddModelError("username", "Username taken");
+                ModelState.AddModelError("username", "Username taken");
                 return ValidationProblem(ModelState);
             }
 
@@ -92,12 +92,12 @@ namespace API.Controllers
         private UserDto CreateUserObject(AppUser user)
         {
             return new UserDto
-                {
-                    DisplayName = user.DisplayName,
-                    Image = null,
-                    Token = _tokenService.CreateToken(user),
-                    Username = user.UserName
-                };
+            {
+                DisplayName = user.DisplayName,
+                Image = null,
+                Token = _tokenService.CreateToken(user),
+                Username = user.UserName
+            };
         }
     }
 }
